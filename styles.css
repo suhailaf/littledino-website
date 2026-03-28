@@ -12,6 +12,7 @@
   --mint: #c8f7eb;
   --border: rgba(139, 92, 246, 0.12);
   --shadow: 0 18px 45px rgba(109, 84, 147, 0.12);
+  --shadow-strong: 0 18px 35px rgba(139, 92, 246, 0.22);
   --radius-xl: 30px;
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -110,6 +111,7 @@ a {
 .nav-links a {
   font-weight: 600;
   color: #5b5670;
+  transition: 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -117,11 +119,16 @@ a {
 }
 
 .nav-cta {
-  padding: 0.8rem 1.2rem;
-  background: var(--primary);
+  padding: 0.82rem 1.25rem;
+  background: linear-gradient(135deg, var(--primary), #a46fff);
   color: #ffffff !important;
   border-radius: 999px;
   box-shadow: 0 10px 25px rgba(139, 92, 246, 0.25);
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-strong);
 }
 
 .menu-toggle {
@@ -197,6 +204,7 @@ a {
   border-radius: 999px;
   font-weight: 700;
   transition: 0.22s ease;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -207,6 +215,10 @@ a {
   background: linear-gradient(135deg, var(--primary), #a46fff);
   color: #ffffff;
   box-shadow: 0 15px 30px rgba(139, 92, 246, 0.25);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-strong);
 }
 
 .btn-secondary {
@@ -454,6 +466,16 @@ a {
   background: linear-gradient(135deg, #f4eaff, #fff4da);
 }
 
+#register .cta-box {
+  margin-top: 1.5rem;
+}
+
+#register .cta-box h3 {
+  margin-bottom: 0.7rem;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.6rem;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -502,6 +524,7 @@ a {
   margin: 0.15rem 0 0;
 }
 
+/* Tablet */
 @media (max-width: 980px) {
   .hero-grid,
   .safety-grid,
@@ -538,6 +561,7 @@ a {
   }
 }
 
+/* Mobile */
 @media (max-width: 760px) {
   .menu-toggle {
     display: inline-grid;
@@ -573,6 +597,10 @@ a {
     background: #f6efff;
   }
 
+  .nav-cta {
+    text-align: center;
+  }
+
   .hero {
     padding-top: 3rem;
   }
@@ -581,7 +609,8 @@ a {
   .step-card,
   .safety-card,
   .about-panel,
-  .contact-card {
+  .contact-card,
+  .cta-box {
     padding: 1.3rem;
   }
 
@@ -600,5 +629,23 @@ a {
 
   .brand-title {
     font-size: 1.45rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn,
+  .cta-box .btn {
+    width: 100%;
+  }
+
+  #register .cta-box {
+    text-align: left;
   }
 }
