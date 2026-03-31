@@ -105,7 +105,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.1rem;
 }
 
 .nav-links a {
@@ -188,7 +188,8 @@ a {
   font-size: 1.05rem;
 }
 
-.hero-actions {
+.hero-actions,
+.cta-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -316,10 +317,38 @@ a {
   margin: 0 auto 2.5rem;
 }
 
-.cards-grid {
+.cards-grid,
+.steps-grid,
+.contact-grid,
+.plans-grid,
+.testimonial-grid,
+.analytics-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1.4rem;
+}
+
+.cards-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.steps-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contact-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.plans-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.testimonial-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.analytics-grid {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .feature-card,
@@ -327,13 +356,24 @@ a {
 .safety-card,
 .about-panel,
 .contact-card,
-.cta-box {
+.cta-box,
+.plan-card,
+.testimonial-card,
+.analytics-card,
+.phone-card {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(139, 92, 246, 0.08);
   box-shadow: var(--shadow);
 }
 
-.feature-card {
+.feature-card,
+.step-card,
+.safety-card,
+.about-panel,
+.contact-card,
+.plan-card,
+.testimonial-card,
+.analytics-card {
   border-radius: var(--radius-xl);
   padding: 1.7rem;
 }
@@ -353,9 +393,21 @@ a {
 .step-card h3,
 .safety-card h3,
 .about-panel h3,
-.contact-card h3 {
+.contact-card h3,
+.plan-card h3,
+.testimonial-card h4,
+.analytics-card h3 {
   margin: 0.2rem 0 0.7rem;
   font-family: "Baloo 2", sans-serif;
+}
+
+.feature-card h3,
+.step-card h3,
+.safety-card h3,
+.about-panel h3,
+.contact-card h3,
+.plan-card h3,
+.analytics-card h3 {
   font-size: 1.45rem;
 }
 
@@ -363,20 +415,17 @@ a {
 .step-card p,
 .safety-card p,
 .contact-card p,
-.about-panel li {
+.about-panel li,
+.about-panel p,
+.plan-card p,
+.plan-card li,
+.testimonial-card p,
+.analytics-card p {
   color: var(--muted);
   line-height: 1.8;
 }
 
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.3rem;
-}
-
 .step-card {
-  border-radius: var(--radius-xl);
-  padding: 1.7rem;
   text-align: center;
 }
 
@@ -394,7 +443,8 @@ a {
 }
 
 .safety-grid,
-.about-grid {
+.about-grid,
+.app-preview-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 2rem;
@@ -410,8 +460,6 @@ a {
 }
 
 .safety-card {
-  border-radius: var(--radius-xl);
-  padding: 2rem;
   text-align: center;
 }
 
@@ -441,15 +489,135 @@ a {
   color: var(--primary-dark);
 }
 
-.about-panel {
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-}
-
 .about-panel ul {
   margin: 1rem 0 0;
   padding-left: 1.1rem;
   line-height: 1.9;
+}
+
+/* App Preview */
+.app-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.phone-card {
+  border-radius: 38px;
+  padding: 1rem;
+}
+
+.phone-header {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.phone-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d6c9f8;
+}
+
+.phone-screen {
+  border-radius: 30px;
+  padding: 1.2rem;
+  min-height: 420px;
+  background: linear-gradient(180deg, #faf5ff 0%, #fffef9 100%);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+}
+
+.mock-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.chat-bubble {
+  max-width: 90%;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.chat-bubble-user {
+  align-self: flex-end;
+  background: #f0e7ff;
+}
+
+.chat-bubble-bot {
+  align-self: flex-start;
+  background: #ffffff;
+  border: 1px solid rgba(139, 92, 246, 0.08);
+}
+
+.mini-recommendation {
+  background: #ffffff;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  color: var(--muted);
+}
+
+/* Plans */
+.plan-card {
+  position: relative;
+}
+
+.plan-badge {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #f2eaff;
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.86rem;
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0.4rem 0 1rem;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.plan-list {
+  margin: 0 0 1.5rem;
+  padding-left: 1.1rem;
+}
+
+.featured-plan {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f1ff 100%);
+  transform: translateY(-6px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* Testimonials */
+.testimonial-card .stars {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Analytics */
+.analytics-card {
+  text-align: center;
+}
+
+.analytics-value {
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-family: "Baloo 2", sans-serif;
+  margin: 0.6rem 0 0.8rem;
+  color: var(--primary-dark);
 }
 
 .cta-section {
@@ -474,17 +642,6 @@ a {
   margin-bottom: 0.7rem;
   font-family: "Baloo 2", sans-serif;
   font-size: 1.6rem;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.contact-card {
-  border-radius: var(--radius-xl);
-  padding: 1.4rem;
 }
 
 .site-footer {
@@ -529,9 +686,17 @@ a {
   .hero-grid,
   .safety-grid,
   .about-grid,
+  .app-preview-grid,
   .cards-grid,
   .steps-grid,
-  .contact-grid {
+  .contact-grid,
+  .plans-grid,
+  .testimonial-grid,
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-info-grid {
     grid-template-columns: 1fr;
   }
 
@@ -558,6 +723,10 @@ a {
   .footer-content {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .featured-plan {
+    transform: none;
   }
 }
 
@@ -610,7 +779,11 @@ a {
   .safety-card,
   .about-panel,
   .contact-card,
-  .cta-box {
+  .cta-box,
+  .plan-card,
+  .testimonial-card,
+  .analytics-card,
+  .phone-card {
     padding: 1.3rem;
   }
 
@@ -635,7 +808,8 @@ a {
     font-size: 0.8rem;
   }
 
-  .hero-actions {
+  .hero-actions,
+  .cta-actions {
     flex-direction: column;
     align-items: stretch;
   }
