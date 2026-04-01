@@ -32,7 +32,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     const targetId = this.getAttribute("href");
 
-    if (targetId.length > 1) {
+    if (targetId && targetId.length > 1) {
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
@@ -69,21 +69,25 @@ const animateCounter = (counter) => {
   updateCounter();
 };
 
-const observer = new IntersectionObserver(
-  (entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.45 }
-);
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
 
-counters.forEach((counter) => {
-  observer.observe(counter);
-});
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
+} else {
+  counters.forEach((counter) => animateCounter(counter));
+}
 
 // =============================
 // BUTTON CLICK FEEDBACK
@@ -105,7 +109,7 @@ const sparklesContainer = document.getElementById("sparkles");
 if (sparklesContainer) {
   const sparkleCount = 22;
 
-  for (let i = 0; i < sparkleCount; i++) {
+  for (let i = 0; i < sparkleCount; i += 1) {
     const sparkle = document.createElement("span");
     sparkle.classList.add("sparkle");
 
@@ -130,21 +134,23 @@ if (sparklesContainer) {
 // REVEAL ON SCROLL
 // =============================
 const revealItems = document.querySelectorAll(
-  ".feature-card, .step-card, .about-panel, .safety-card, .plan-card, .testimonial-card, .analytics-card, .contact-card, .phone-card"
+  ".feature-card, .step-card, .about-panel, .safety-main-card, .safety-side-card, .plan-card, .testimonial-card, .analytics-card, .contact-card, .app-phone"
 );
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("reveal-visible");
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-revealItems.forEach((item) => {
-  item.classList.add("reveal");
-  revealObserver.observe(item);
-});
+  revealItems.forEach((item) => {
+    item.classList.add("reveal");
+    revealObserver.observe(item);
+  });
+}
