@@ -57,7 +57,7 @@ a {
   z-index: 2;
 }
 
-/* animated background */
+/* Animated background */
 .bg-orb {
   position: fixed;
   border-radius: 50%;
@@ -155,7 +155,7 @@ a {
   }
 }
 
-/* glass effect */
+/* Glass effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(14px);
@@ -579,7 +579,7 @@ a {
   line-height: 1.9;
 }
 
-/* app showcase */
+/* App showcase */
 .app-showcase {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -701,8 +701,19 @@ a {
 
 .recommendation-image {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
+  background: #f4f4f4;
+}
+
+.book-card .recommendation-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-card .recommendation-image {
+  object-fit: cover;
+  object-position: center;
 }
 
 .recommendation-content {
@@ -790,7 +801,7 @@ a {
   gap: 1rem;
 }
 
-/* safety redesign */
+/* Safety redesign */
 .safety-modern-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -879,7 +890,7 @@ a {
   gap: 1rem;
 }
 
-/* plans */
+/* Plans */
 .plans-grid {
   display: grid;
   gap: 1.4rem;
@@ -930,7 +941,7 @@ a {
   border: 1px solid rgba(139, 92, 246, 0.18);
 }
 
-/* testimonials */
+/* Testimonials */
 .testimonial-slider-wrapper {
   overflow: hidden;
   position: relative;
@@ -984,7 +995,7 @@ a {
   }
 }
 
-/* analytics */
+/* Analytics */
 .analytics-card {
   text-align: center;
 }
@@ -1050,7 +1061,7 @@ a {
   margin: 0.15rem 0 0;
 }
 
-/* reveal animation */
+/* Reveal animation */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1062,7 +1073,7 @@ a {
   transform: translateY(0);
 }
 
-/* tablet */
+/* Tablet */
 @media (max-width: 980px) {
   .hero-grid,
   .about-grid,
@@ -1117,7 +1128,7 @@ a {
   }
 }
 
-/* mobile */
+/* Mobile */
 @media (max-width: 760px) {
   .menu-toggle {
     display: inline-grid;
@@ -1225,6 +1236,10 @@ a {
 
   .recommendation-card {
     min-height: auto;
+  }
+
+  .recommendation-image {
+    height: 180px;
   }
 
   .testimonial-avatar {
