@@ -147,12 +147,12 @@ if (floatingBackground && window.innerWidth > 768) {
   });
 }
 
-/* chatbot demo */
-
 const demoChatWindow = document.getElementById("demoChatWindow");
 const demoRecommendationRow = document.getElementById("demoRecommendationRow");
 const demoInputText = document.getElementById("demoInputText");
 const demoSendBtn = document.getElementById("demoSendBtn");
+const demoStatusText = document.getElementById("demoStatusText");
+const demoChips = document.querySelectorAll(".demo-chip");
 
 const demoBookTitle = document.getElementById("demoBookTitle");
 const demoBookDesc = document.getElementById("demoBookDesc");
@@ -161,12 +161,12 @@ const demoVideoDesc = document.getElementById("demoVideoDesc");
 const demoBookImage = document.getElementById("demoBookImage");
 const demoVideoImage = document.getElementById("demoVideoImage");
 
-const demoScenarios = [
-  {
+const demoScenarios = {
+  sharks: {
     user: "sharks",
     botMessages: [
       "Sharks are amazing! They are such interesting animals.",
-      "I found a fun book and a matching ocean video for you."
+      "I found a fun animal book and a matching ocean learning video for you."
     ],
     bookTitle: "The Jungle Book",
     bookDesc: "A classic animal adventure children enjoy reading.",
@@ -175,7 +175,7 @@ const demoScenarios = [
     bookImage: "book.jpg",
     videoImage: "vid.png"
   },
-  {
+  space: {
     user: "space",
     botMessages: [
       "Wow, space is exciting!",
@@ -188,11 +188,11 @@ const demoScenarios = [
     bookImage: "book.jpg",
     videoImage: "vid.png"
   },
-  {
+  dinosaurs: {
     user: "dinosaurs",
     botMessages: [
       "Dinosaurs are one of my favorites too!",
-      "Here’s a dino story and a matching learning video."
+      "Here’s a dino story and a matching learning video for you."
     ],
     bookTitle: "Dino Explorer",
     bookDesc: "A fun children’s story about dinosaur adventures.",
@@ -201,7 +201,7 @@ const demoScenarios = [
     bookImage: "book.jpg",
     videoImage: "vid.png"
   },
-  {
+  bedtime: {
     user: "bedtime story",
     botMessages: [
       "A bedtime story sounds lovely.",
@@ -214,12 +214,11 @@ const demoScenarios = [
     bookImage: "book.jpg",
     videoImage: "vid.png"
   }
-];
+};
 
-let demoIndex = 0;
-let demoRunning = false;
+let demoBusy = false;
 
-function wait(ms) {
+function demoWait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -228,28 +227,34 @@ function scrollDemoToBottom() {
   demoChatWindow.scrollTop = demoChatWindow.scrollHeight;
 }
 
-function createMessage(text, className) {
+function setActiveChip(key) {
+  demoChips.forEach((chip) => {
+    chip.classList.toggle("active", chip.dataset.demo === key);
+  });
+}
+
+function createDemoMessage(text, className) {
   const message = document.createElement("div");
   message.className = `app-message ${className} demo-new`;
   message.textContent = text;
   return message;
 }
 
-function createTypingIndicator() {
+function createDemoTypingIndicator() {
   const typing = document.createElement("div");
   typing.className = "app-message demo-typing demo-new";
   typing.innerHTML = "<span></span><span></span><span></span>";
   return typing;
 }
 
-function resetDemo() {
+function resetDemoChat() {
   if (!demoChatWindow) return;
 
   demoChatWindow.innerHTML = `
-    <div class="app-message app-message-bot demo-welcome">
+    <div class="app-message app-message-bot demo-new">
       Hi! I’m Little Dino 🦕
       <br />
-      Ask me about animals, space, bedtime stories, or fun learning videos!
+      Tap a topic above and I’ll show you how I recommend books and videos.
     </div>
   `;
 
@@ -260,26 +265,53 @@ function resetDemo() {
   if (demoInputText) {
     demoInputText.textContent = "Ask Little Dino for a story...";
   }
+
+  if (demoStatusText) {
+    demoStatusText.textContent = "Online • Ready to help";
+    demoStatusText.className = "demo-status-ready";
+  }
 }
 
-async function typeIntoInput(text) {
+async function typeIntoDemoInput(text) {
   if (!demoInputText) return;
 
   demoInputText.innerHTML = `<span class="demo-cursor">|</span>`;
 
   for (let i = 1; i <= text.length; i += 1) {
     demoInputText.innerHTML = `${text.slice(0, i)}<span class="demo-cursor">|</span>`;
-    await wait(85);
+    await demoWait(80);
   }
 
-  await wait(250);
+  await demoWait(180);
   demoInputText.textContent = text;
 }
 
-function updateRecommendationCards(scenario) {
-  if (!demoBookTitle || !demoBookDesc || !demoVideoTitle || !demoVideoDesc || !demoBookImage || !demoVideoImage) {
-    return;
+async function showBotTypingThenMessage(text) {
+  if (!demoChatWindow) return;
+
+  if (demoStatusText) {
+    demoStatusText.textContent = "Little Dino is typing...";
+    demoStatusText.className = "demo-status-thinking";
   }
+
+  const typing = createDemoTypingIndicator();
+  demoChatWindow.appendChild(typing);
+  scrollDemoToBottom();
+
+  await demoWait(950);
+
+  typing.remove();
+  demoChatWindow.appendChild(createDemoMessage(text, "app-message-bot"));
+  scrollDemoToBottom();
+
+  if (demoStatusText) {
+    demoStatusText.textContent = "Online • Ready to help";
+    demoStatusText.className = "demo-status-ready";
+  }
+}
+
+function updateDemoCards(scenario) {
+  if (!scenario) return;
 
   demoBookTitle.textContent = scenario.bookTitle;
   demoBookDesc.textContent = scenario.bookDesc;
@@ -288,33 +320,20 @@ function updateRecommendationCards(scenario) {
   demoBookImage.src = scenario.bookImage;
   demoVideoImage.src = scenario.videoImage;
 
-  if (demoRecommendationRow) {
-    demoRecommendationRow.classList.add("active");
-  }
+  demoRecommendationRow.classList.add("active");
 }
 
-async function showBotMessage(text) {
-  if (!demoChatWindow) return;
+async function runInteractiveDemo(key) {
+  if (demoBusy || !demoScenarios[key]) return;
+  demoBusy = true;
 
-  const typing = createTypingIndicator();
-  demoChatWindow.appendChild(typing);
-  scrollDemoToBottom();
+  const scenario = demoScenarios[key];
+  setActiveChip(key);
+  resetDemoChat();
 
-  await wait(1000);
-
-  typing.remove();
-  demoChatWindow.appendChild(createMessage(text, "app-message-bot"));
-  scrollDemoToBottom();
-}
-
-async function playScenario(scenario) {
-  if (!demoChatWindow) return;
-
-  resetDemo();
-  await wait(900);
-
-  await typeIntoInput(scenario.user);
-  await wait(250);
+  await demoWait(350);
+  await typeIntoDemoInput(scenario.user);
+  await demoWait(220);
 
   if (demoSendBtn) {
     demoSendBtn.style.transform = "scale(0.9)";
@@ -323,47 +342,40 @@ async function playScenario(scenario) {
     }, 180);
   }
 
-  demoChatWindow.appendChild(createMessage(scenario.user, "app-message-user"));
+  demoChatWindow.appendChild(createDemoMessage(scenario.user, "app-message-user"));
   scrollDemoToBottom();
 
-  await wait(650);
+  await demoWait(500);
 
   for (const msg of scenario.botMessages) {
-    await showBotMessage(msg);
-    await wait(500);
+    await showBotTypingThenMessage(msg);
+    await demoWait(400);
   }
 
-  updateRecommendationCards(scenario);
+  updateDemoCards(scenario);
   scrollDemoToBottom();
 
-  await wait(3400);
+  demoBusy = false;
 }
 
-async function startDemoLoop() {
-  if (demoRunning || !demoChatWindow) return;
-  demoRunning = true;
-
-  while (true) {
-    const scenario = demoScenarios[demoIndex];
-    await playScenario(scenario);
-    demoIndex = (demoIndex + 1) % demoScenarios.length;
-  }
-}
+demoChips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    runInteractiveDemo(chip.dataset.demo);
+  });
+});
 
 if ("IntersectionObserver" in window && demoChatWindow) {
-  const demoObserver = new IntersectionObserver(
+  const interactiveDemoObserver = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !demoRunning) {
-          startDemoLoop();
+        if (entry.isIntersecting) {
+          runInteractiveDemo("sharks");
           obs.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.35 }
+    { threshold: 0.45 }
   );
 
-  demoObserver.observe(demoChatWindow);
-} else if (demoChatWindow) {
-  startDemoLoop();
+  interactiveDemoObserver.observe(demoChatWindow);
 }
