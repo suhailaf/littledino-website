@@ -64,7 +64,6 @@ main,
   z-index: 2;
 }
 
-/* background */
 .bg-orb {
   position: fixed;
   border-radius: 50%;
@@ -787,6 +786,35 @@ main,
   flex-direction: column;
 }
 
+.demo-quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.demo-chip {
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.6rem 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.demo-chip:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.demo-chip.active {
+  background: #ffffff;
+  color: #5d3fe4;
+}
+
 .demo-chat-window {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border: 1px solid rgba(255,255,255,0.08);
@@ -831,10 +859,6 @@ main,
   background: #d9d9d9;
   color: #2b2b2b;
   border-bottom-left-radius: 8px;
-}
-
-.demo-welcome {
-  opacity: 0.95;
 }
 
 .demo-new {
@@ -1017,6 +1041,14 @@ main,
   font-weight: 800;
   cursor: pointer;
   transition: transform 0.2s ease;
+}
+
+.demo-status-thinking {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.demo-status-ready {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .app-bottom-nav {
@@ -1416,5 +1448,14 @@ main,
 
   .demo-chat-window {
     max-height: 300px;
+  }
+
+  .demo-quick-prompts {
+    gap: 0.5rem;
+  }
+
+  .demo-chip {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.8rem;
   }
 }
