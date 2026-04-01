@@ -64,6 +64,7 @@ main,
   z-index: 2;
 }
 
+/* Background effects */
 .bg-orb {
   position: fixed;
   border-radius: 50%;
@@ -130,6 +131,73 @@ main,
   opacity: 0;
 }
 
+/* NEW moving feature icons */
+.floating-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-shape {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.16;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+  filter: blur(0.2px);
+}
+
+.shape-book {
+  top: 12%;
+  left: 8%;
+  animation: driftOne 18s infinite;
+}
+
+.shape-star {
+  top: 20%;
+  right: 10%;
+  animation: driftTwo 22s infinite;
+}
+
+.shape-heart {
+  top: 52%;
+  left: 6%;
+  animation: driftThree 20s infinite;
+}
+
+.shape-video {
+  top: 62%;
+  right: 8%;
+  animation: driftFour 24s infinite;
+}
+
+.shape-dino {
+  bottom: 14%;
+  left: 20%;
+  animation: driftFive 19s infinite;
+}
+
+.shape-spark {
+  bottom: 18%;
+  right: 18%;
+  animation: driftSix 21s infinite;
+}
+
+.shape-moon {
+  top: 75%;
+  left: 42%;
+  animation: driftTwo 25s infinite;
+}
+
+.shape-rainbow {
+  top: 35%;
+  left: 82%;
+  animation: driftThree 23s infinite;
+}
+
 @keyframes sparkleFloat {
   0% {
     transform: translateY(0px) scale(0.8);
@@ -161,12 +229,55 @@ main,
   }
 }
 
+@keyframes driftOne {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -20px) rotate(8deg); }
+  50% { transform: translate(10px, 25px) rotate(-6deg); }
+  75% { transform: translate(-20px, -12px) rotate(5deg); }
+}
+
+@keyframes driftTwo {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-25px, 20px) scale(1.08); }
+  50% { transform: translate(15px, 35px) scale(0.95); }
+  75% { transform: translate(-10px, -18px) scale(1.04); }
+}
+
+@keyframes driftThree {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(18px, -24px) rotate(12deg); }
+  60% { transform: translate(35px, 12px) rotate(-10deg); }
+  80% { transform: translate(-10px, 20px) rotate(5deg); }
+}
+
+@keyframes driftFour {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-18px, -22px); }
+  40% { transform: translate(22px, -8px); }
+  70% { transform: translate(-14px, 20px); }
+}
+
+@keyframes driftFive {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, -16px) rotate(6deg); }
+  50% { transform: translate(42px, 10px) rotate(-8deg); }
+  75% { transform: translate(8px, 22px) rotate(4deg); }
+}
+
+@keyframes driftSix {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30% { transform: translate(-16px, -30px) scale(1.12); }
+  60% { transform: translate(24px, -4px) scale(0.92); }
+  80% { transform: translate(-8px, 18px) scale(1.05); }
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
 
+/* Header */
 .site-header {
   position: sticky;
   top: 0;
@@ -259,6 +370,7 @@ main,
   color: var(--text);
 }
 
+/* Hero */
 .hero {
   padding: 5.3rem 0 4rem;
   position: relative;
@@ -405,6 +517,36 @@ main,
   }
 }
 
+/* NEW moving dino logo */
+.dino-logo-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+.moving-dino-logo {
+  animation: dinoFloatAround 10s ease-in-out infinite;
+  transform-origin: center;
+  position: relative;
+}
+
+@keyframes dinoFloatAround {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(18px, -10px) rotate(4deg) scale(1.02);
+  }
+  40% {
+    transform: translate(-14px, -24px) rotate(-5deg) scale(1.04);
+  }
+  60% {
+    transform: translate(20px, 12px) rotate(3deg) scale(1.01);
+  }
+  80% {
+    transform: translate(-12px, 14px) rotate(-3deg) scale(0.99);
+  }
+}
+
 .floating-pill {
   position: absolute;
   padding: 0.72rem 1rem;
@@ -431,6 +573,7 @@ main,
   right: -2%;
 }
 
+/* Sections */
 .section {
   padding: 5.4rem 0;
   position: relative;
@@ -584,6 +727,7 @@ main,
   line-height: 1.9;
 }
 
+/* App showcase */
 .app-showcase {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -795,6 +939,7 @@ main,
   gap: 1rem;
 }
 
+/* Safety */
 .safety-modern-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -816,27 +961,20 @@ main,
 }
 
 .safety-icon-wrap {
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
   border-radius: 20px;
   display: grid;
   place-items: center;
   font-size: 1.8rem;
   background: linear-gradient(135deg, #efe3ff, #fff1d1);
-  flex-shrink: 0;
 }
 
-.safety-main-top p,
-.safety-side-card p {
-  margin: 0;
+.safety-main-top p {
+  margin: 0.4rem 0 0;
   color: var(--muted);
-  line-height: 1.75;
-}
-
-.safety-side-card h3 {
-  margin: 0 0 0.45rem;
-  font-family: "Baloo 2", sans-serif;
-  font-size: 1.45rem;
+  line-height: 1.8;
 }
 
 .safety-feature-grid {
@@ -847,23 +985,15 @@ main,
 
 .safety-feature-item {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.9rem;
   align-items: flex-start;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.65);
-  border-radius: 18px;
-  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .safety-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: #f3ebff;
-  flex-shrink: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .safety-feature-item h4 {
@@ -875,7 +1005,7 @@ main,
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
 }
 
 .safety-side-column {
@@ -883,14 +1013,15 @@ main,
   gap: 1rem;
 }
 
+/* Plans */
 .plans-grid {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.5rem;
 }
 
 .plans-grid-two {
   grid-template-columns: repeat(2, 1fr);
-  max-width: 860px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -898,41 +1029,46 @@ main,
   position: relative;
 }
 
+.featured-plan {
+  transform: scale(1.02);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: var(--shadow-strong);
+}
+
 .plan-badge {
   display: inline-block;
-  padding: 0.45rem 0.8rem;
+  padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: #f2eaff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: #f1e8ff;
   color: var(--primary-dark);
-  font-weight: 700;
-  font-size: 0.86rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .plan-price {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  color: var(--text);
-  margin: 0.4rem 0 1rem;
+  font-family: "Baloo 2", sans-serif;
+  color: var(--primary-dark);
+  margin: 0.2rem 0 1rem;
 }
 
 .plan-price span {
   font-size: 1rem;
-  font-weight: 600;
   color: var(--muted);
 }
 
 .plan-list {
-  margin: 0 0 1.5rem;
-  padding-left: 1.1rem;
+  padding-left: 1.2rem;
+  margin: 1rem 0 1.5rem;
 }
 
-.featured-plan {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 241, 255, 0.92) 100%);
-  transform: translateY(-6px);
-  border: 1px solid rgba(139, 92, 246, 0.18);
+.plan-list li {
+  margin-bottom: 0.7rem;
 }
 
+/* Testimonials */
 .testimonial-slider-wrapper {
   overflow: hidden;
   position: relative;
@@ -986,6 +1122,7 @@ main,
   }
 }
 
+/* Analytics */
 .analytics-card {
   text-align: center;
 }
@@ -998,6 +1135,7 @@ main,
   color: var(--primary-dark);
 }
 
+/* CTA */
 .cta-section {
   padding-top: 2rem;
 }
@@ -1012,6 +1150,7 @@ main,
   background: linear-gradient(135deg, rgba(244, 234, 255, 0.76), rgba(255, 244, 218, 0.78));
 }
 
+/* Footer */
 .site-footer {
   padding: 2rem 0;
   background: rgba(255, 255, 255, 0.55);
@@ -1051,6 +1190,7 @@ main,
   margin: 0.15rem 0 0;
 }
 
+/* Reveal animation */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1062,6 +1202,7 @@ main,
   transform: translateY(0);
 }
 
+/* Responsive */
 @media (max-width: 980px) {
   .hero-grid,
   .about-grid,
@@ -1070,34 +1211,23 @@ main,
   .contact-grid,
   .analytics-grid,
   .app-showcase,
-  .safety-modern-grid,
-  .plans-grid-two {
+  .plans-grid-two,
+  .safety-modern-grid {
     grid-template-columns: 1fr;
   }
 
+  .hero-highlights,
   .app-side-info,
-  .safety-feature-grid,
-  .recommendation-row {
+  .safety-feature-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-highlights {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    max-width: none;
+  .hero {
+    padding-top: 4.6rem;
   }
 
   .hero-visual {
-    min-height: auto;
-    padding-top: 1rem;
-  }
-
-  .floating-pill-1,
-  .floating-pill-2,
-  .floating-pill-3 {
-    display: none;
+    min-height: 420px;
   }
 
   .cta-box,
@@ -1109,133 +1239,73 @@ main,
   .featured-plan {
     transform: none;
   }
-
-  .moving-card {
-    min-width: 280px;
-    max-width: 280px;
-  }
 }
 
-@media (max-width: 760px) {
-  .menu-toggle {
-    display: inline-grid;
-    place-items: center;
-  }
-
+@media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 82px;
-    left: 1rem;
+    top: calc(100% + 10px);
     right: 1rem;
     display: none;
     flex-direction: column;
-    align-items: stretch;
-    gap: 0.45rem;
-    padding: 1rem;
+    align-items: flex-start;
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 24px;
+    padding: 1rem;
+    border-radius: 18px;
     box-shadow: var(--shadow);
-    border: 1px solid rgba(139, 92, 246, 0.08);
+    min-width: 220px;
   }
 
   .nav-links.show {
     display: flex;
   }
 
-  .nav-links a {
-    padding: 0.85rem 0.8rem;
-    border-radius: 14px;
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
   }
 
-  .nav-links a:hover {
-    background: #f6efff;
+  .hero h1 {
+    max-width: 100%;
   }
 
-  .nav-cta {
-    text-align: center;
+  .moving-card {
+    min-width: 280px;
+    max-width: 280px;
   }
 
-  .hero {
-    padding-top: 3.5rem;
+  .floating-shape {
+    font-size: 1.4rem;
+    opacity: 0.1;
   }
 
-  .feature-card,
-  .step-card,
-  .about-panel,
-  .contact-card,
-  .cta-box,
-  .plan-card,
-  .testimonial-card,
-  .analytics-card,
-  .app-phone,
-  .safety-main-card,
-  .safety-side-card {
-    padding: 1.3rem;
+  .moving-dino-logo {
+    animation-duration: 10s;
   }
+}
 
-  .hero-image-card {
-    border-radius: 28px;
-  }
-
-  .hero-mascot {
-    border-radius: 20px;
-  }
-
-  .brand-logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .brand-title {
-    font-size: 1.45rem;
+@media (max-width: 560px) {
+  .container {
+    width: min(var(--container), calc(100% - 1.25rem));
   }
 
   .brand-subtitle {
-    font-size: 0.8rem;
+    display: none;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .hero-highlights {
+    grid-template-columns: 1fr;
   }
 
-  .hero-actions .btn,
-  .cta-box .btn {
-    width: 100%;
-  }
-
-  .app-branding h3 {
-    font-size: 1.35rem;
-  }
-
-  .app-chat-area {
-    padding: 1rem;
-  }
-
-  .app-message {
-    max-width: 100%;
-    font-size: 0.92rem;
+  .recommendation-row {
+    grid-template-columns: 1fr;
   }
 
   .app-bottom-nav {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .recommendation-card {
-    min-height: auto;
-  }
-
-  .recommendation-image {
-    height: 180px;
-  }
-
-  .testimonial-avatar {
-    width: 50px;
-    height: 50px;
-  }
-
-  .moving-card {
-    min-width: 260px;
-    max-width: 260px;
+  .plan-price {
+    font-size: 2rem;
   }
 }
