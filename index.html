@@ -15,20 +15,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="bg-grid"></div>
+  <div class="sparkles" id="sparkles"></div>
+
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="brand">
         <img src="little_dino_icon_512.png" alt="Little Dino logo" class="brand-logo" />
         <div class="brand-text">
           <span class="brand-title">Little Dino</span>
-          <span class="brand-subtitle">Kids Book & Video Discovery</span>
+          <span class="brand-subtitle">Safe Kids Book & Video Discovery</span>
         </div>
       </a>
 
@@ -55,12 +61,12 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="tag">Safe • Friendly • Educational</span>
-          <h1>A playful way for kids to discover books and videos</h1>
+          <span class="tag">Safe • Smart • Child-Friendly</span>
+          <h1>A smarter and safer way for kids to discover books and videos</h1>
           <p class="hero-description">
             Little Dino helps children explore age-appropriate books and videos
-            through a simple chatbot experience designed for curiosity, safety,
-            and fun.
+            through a guided chatbot experience designed for curiosity, learning,
+            safety, and fun.
           </p>
 
           <div class="hero-actions">
@@ -69,15 +75,15 @@
           </div>
 
           <div class="hero-highlights">
-            <div class="highlight-card">
+            <div class="highlight-card glass-card">
               <strong>Child-Friendly</strong>
-              <span>Made for young learners</span>
+              <span>Designed for young learners</span>
             </div>
-            <div class="highlight-card">
+            <div class="highlight-card glass-card">
               <strong>Safe Discovery</strong>
               <span>Focused on suitable content</span>
             </div>
-            <div class="highlight-card">
+            <div class="highlight-card glass-card">
               <strong>Smart Search</strong>
               <span>Chatbot-powered recommendations</span>
             </div>
@@ -85,7 +91,7 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-image-card">
+          <div class="hero-image-card glass-card floating-card">
             <img
               src="little_dino_icon_512.png"
               alt="Little Dino mascot"
@@ -107,12 +113,13 @@
           <h2>What makes Little Dino special?</h2>
           <p>
             The platform is designed to help children find content in a simple,
-            safe, and engaging way while giving parents more confidence and visibility.
+            safe, engaging, and professionally guided way while giving parents
+            more confidence and visibility.
           </p>
         </div>
 
         <div class="cards-grid">
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">💬</div>
             <h3>Chatbot Recommendations</h3>
             <p>
@@ -121,7 +128,7 @@
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">📚</div>
             <h3>Curated Book Library</h3>
             <p>
@@ -130,7 +137,7 @@
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">🎥</div>
             <h3>Video Discovery</h3>
             <p>
@@ -139,7 +146,7 @@
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">⭐</div>
             <h3>Personalised Picks</h3>
             <p>
@@ -148,7 +155,7 @@
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">👨‍👩‍👧</div>
             <h3>Parent-Focused Controls</h3>
             <p>
@@ -157,7 +164,7 @@
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card glass-card">
             <div class="feature-icon">📱</div>
             <h3>Mobile Friendly</h3>
             <p>
@@ -182,7 +189,7 @@
         </div>
 
         <div class="app-preview-grid">
-          <div class="phone-card">
+          <div class="phone-card glass-card">
             <div class="phone-header">
               <span class="phone-dot"></span>
               <span class="phone-dot"></span>
@@ -207,7 +214,7 @@
           </div>
 
           <div class="app-info-grid">
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Chatbot Home</h3>
               <p>
                 Kids can ask for stories or topics they like and receive simple,
@@ -215,7 +222,7 @@
               </p>
             </div>
 
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Books & Videos</h3>
               <p>
                 The app recommends both books and educational videos in one
@@ -223,28 +230,28 @@
               </p>
             </div>
 
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Favourites</h3>
               <p>
                 Children and families can save preferred content for quick access later.
               </p>
             </div>
 
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Reading History</h3>
               <p>
                 The app can support smarter future recommendations using previous activity.
               </p>
             </div>
 
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Parent Controls</h3>
               <p>
                 The design supports safer exploration with age-based and guided usage options.
               </p>
             </div>
 
-            <div class="about-panel">
+            <div class="about-panel glass-card">
               <h3>Admin Management</h3>
               <p>
                 Content can be curated and managed to keep the experience safe,
@@ -256,19 +263,19 @@
       </div>
     </section>
 
-    <section class="section alt-bg" id="how-it-works">
+    <section class="section" id="how-it-works">
       <div class="container">
         <div class="section-heading">
           <span class="tag">How It Works</span>
           <h2>A simple journey for young users</h2>
           <p>
             The experience is designed to reduce confusion and make content
-            discovery fun.
+            discovery simple, friendly, and fun.
           </p>
         </div>
 
         <div class="steps-grid">
-          <div class="step-card">
+          <div class="step-card glass-card">
             <div class="step-number">1</div>
             <h3>Ask the chatbot</h3>
             <p>
@@ -277,7 +284,7 @@
             </p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card glass-card">
             <div class="step-number">2</div>
             <h3>Get recommendations</h3>
             <p>
@@ -286,7 +293,7 @@
             </p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card glass-card">
             <div class="step-number">3</div>
             <h3>Explore safely</h3>
             <p>
@@ -298,7 +305,7 @@
       </div>
     </section>
 
-    <section class="section" id="safety">
+    <section class="section alt-bg" id="safety">
       <div class="container safety-grid">
         <div class="safety-text">
           <span class="tag">Safety</span>
@@ -319,7 +326,7 @@
           </ul>
         </div>
 
-        <div class="safety-card">
+        <div class="safety-card glass-card">
           <img
             src="little_dino_icon_512.png"
             alt="Little Dino safety mascot"
@@ -341,7 +348,7 @@
       </div>
     </section>
 
-    <section class="section alt-bg" id="plans">
+    <section class="section" id="plans">
       <div class="container">
         <div class="section-heading">
           <span class="tag">Subscription Plans</span>
@@ -353,7 +360,7 @@
         </div>
 
         <div class="plans-grid">
-          <div class="plan-card">
+          <div class="plan-card glass-card">
             <span class="plan-badge">Starter</span>
             <h3>Free</h3>
             <p class="plan-price">$0<span>/month</span></p>
@@ -366,7 +373,7 @@
             <a href="#register" class="btn btn-secondary">Register Free</a>
           </div>
 
-          <div class="plan-card featured-plan">
+          <div class="plan-card featured-plan glass-card">
             <span class="plan-badge">Most Popular</span>
             <h3>Premium</h3>
             <p class="plan-price">$9.90<span>/month</span></p>
@@ -380,7 +387,7 @@
             <a href="#register" class="btn btn-primary">Start Premium</a>
           </div>
 
-          <div class="plan-card">
+          <div class="plan-card glass-card">
             <span class="plan-badge">Family</span>
             <h3>Family Plus</h3>
             <p class="plan-price">$14.90<span>/month</span></p>
@@ -397,7 +404,7 @@
       </div>
     </section>
 
-    <section class="section" id="testimonials">
+    <section class="section alt-bg" id="testimonials">
       <div class="container">
         <div class="section-heading">
           <span class="tag">Testimonials</span>
@@ -409,7 +416,7 @@
         </div>
 
         <div class="testimonial-grid">
-          <div class="testimonial-card">
+          <div class="testimonial-card glass-card">
             <div class="stars">★★★★★</div>
             <p>
               “Little Dino makes it much easier for my child to discover books
@@ -418,7 +425,7 @@
             <h4>Amira, Parent</h4>
           </div>
 
-          <div class="testimonial-card">
+          <div class="testimonial-card glass-card">
             <div class="stars">★★★★★</div>
             <p>
               “The chatbot format is simple and engaging. It feels more fun than
@@ -427,7 +434,7 @@
             <h4>Daniel, Parent</h4>
           </div>
 
-          <div class="testimonial-card">
+          <div class="testimonial-card glass-card">
             <div class="stars">★★★★★</div>
             <p>
               “I like that books, videos, favourites, and child-friendly discovery
@@ -439,7 +446,7 @@
       </div>
     </section>
 
-    <section class="section alt-bg" id="analytics">
+    <section class="section" id="analytics">
       <div class="container">
         <div class="section-heading">
           <span class="tag">Analytics</span>
@@ -451,19 +458,19 @@
         </div>
 
         <div class="analytics-grid">
-          <div class="analytics-card">
+          <div class="analytics-card glass-card">
             <h3>Registration Rate</h3>
             <div class="analytics-value"><span class="count-up" data-target="78">0</span>%</div>
             <p>Visitors who proceed to register or create an account.</p>
           </div>
 
-          <div class="analytics-card">
+          <div class="analytics-card glass-card">
             <h3>Active Users</h3>
             <div class="analytics-value"><span class="count-up" data-target="1240">0</span>+</div>
             <p>Monthly active users engaging with Little Dino features.</p>
           </div>
 
-          <div class="analytics-card">
+          <div class="analytics-card glass-card">
             <h3>Books Available</h3>
             <div class="analytics-value"><span class="count-up" data-target="420">0</span>+</div>
             <p>Books currently available for safe and guided discovery.</p>
@@ -489,7 +496,7 @@
           </p>
         </div>
 
-        <div class="about-panel">
+        <div class="about-panel glass-card">
           <h3>Planned future additions</h3>
           <ul>
             <li>Live app screenshots</li>
@@ -503,16 +510,18 @@
     </section>
 
     <section class="section cta-section">
-      <div class="container cta-box">
-        <div>
-          <span class="tag">Register</span>
-          <h2>More Little Dino updates are on the way</h2>
-          <p>
-            This marketing website can be continuously updated as your project grows,
-            and visitors can register their interest today.
-          </p>
+      <div class="container">
+        <div class="cta-box glass-card">
+          <div>
+            <span class="tag">Register</span>
+            <h2>Ready to join Little Dino?</h2>
+            <p>
+              This marketing website can continue growing with your project, and
+              visitors can register their interest today.
+            </p>
+          </div>
+          <a href="#register" class="btn btn-primary">Register Now</a>
         </div>
-        <a href="#register" class="btn btn-primary">Register Now</a>
       </div>
     </section>
 
@@ -527,7 +536,7 @@
           </p>
         </div>
 
-        <div class="cta-box">
+        <div class="cta-box glass-card">
           <div>
             <h3 style="margin-top: 0;">Start your Little Dino journey</h3>
             <p>
@@ -548,15 +557,15 @@
         </div>
 
         <div class="contact-grid">
-          <div class="contact-card">
+          <div class="contact-card glass-card">
             <h3>Email</h3>
             <p>admin@littledino.com</p>
           </div>
-          <div class="contact-card">
+          <div class="contact-card glass-card">
             <h3>Project Repository</h3>
             <p>https://github.com/suhailaf/Little-Dino-Marketing-Website</p>
           </div>
-          <div class="contact-card">
+          <div class="contact-card glass-card">
             <h3>App Status</h3>
             <p>Prototype in development</p>
           </div>
@@ -574,7 +583,7 @@
           <p>Chatbot App for Book and Video Recommendations for Kids</p>
         </div>
       </div>
-      <p>© 2026 Little Dino. Mock marketing website prototype.</p>
+      <p>© 2026 Little Dino. Marketing website prototype.</p>
     </div>
   </footer>
 
