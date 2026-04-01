@@ -211,46 +211,49 @@
             </div>
 
             <div class="app-chat-area">
-              <div class="app-message app-message-user">sharks</div>
-
-              <div class="app-message app-message-bot">
-                Sharks are amazing! They are such interesting animals. Let me
-                share a fun book and a video related to animals that you might like.
+              <div class="demo-chat-window" id="demoChatWindow">
+                <div class="app-message app-message-bot demo-welcome">
+                  Hi! I’m Little Dino 🦕
+                  <br />
+                  Ask me about animals, space, bedtime stories, or fun learning videos!
+                </div>
               </div>
 
-              <div class="recommendation-row">
-                <div class="recommendation-card book-card">
+              <div class="demo-recommendation-row" id="demoRecommendationRow">
+                <div class="recommendation-card book-card demo-card" id="demoBookCard">
                   <div class="recommendation-badge">BOOK</div>
                   <img
                     src="book.jpg"
-                    alt="The Jungle Book cover"
+                    alt="Book recommendation"
                     class="recommendation-image"
+                    id="demoBookImage"
                   />
                   <div class="recommendation-content">
-                    <h4>The Jungle Book</h4>
-                    <p>A classic tale of a boy raised by animals in the jungle.</p>
+                    <h4 id="demoBookTitle">Story Book</h4>
+                    <p id="demoBookDesc">A child-friendly book recommendation will appear here.</p>
                     <a href="#register" class="mini-action">Read</a>
                   </div>
                 </div>
 
-                <div class="recommendation-card video-card">
+                <div class="recommendation-card video-card demo-card" id="demoVideoCard">
                   <div class="recommendation-badge video-badge">VIDEO</div>
                   <img
                     src="vid.png"
-                    alt="Ocean Animals educational video thumbnail"
+                    alt="Video recommendation"
                     class="recommendation-image"
+                    id="demoVideoImage"
                   />
                   <div class="recommendation-content">
-                    <h4>Ocean Animals</h4>
-                    <p>A fun educational video about sea creatures and ocean life for kids.</p>
+                    <h4 id="demoVideoTitle">Learning Video</h4>
+                    <p id="demoVideoDesc">A matching educational video will appear here.</p>
                     <a href="#register" class="mini-action">Watch</a>
                   </div>
                 </div>
               </div>
 
-              <div class="app-input-bar">
-                <span>Ask Little Dino for a story...</span>
-                <button type="button" class="app-send-btn">➜</button>
+              <div class="app-input-bar demo-input-bar">
+                <span id="demoInputText">Ask Little Dino for a story...</span>
+                <button type="button" class="app-send-btn" id="demoSendBtn">➜</button>
               </div>
             </div>
 
@@ -449,7 +452,7 @@
             <ul class="plan-list">
               <li>Basic chatbot recommendations</li>
               <li>Selected books and videos</li>
-              <li>Limited Chatbot Query</li>
+              <li>Limited chatbot queries</li>
               <li>Age-based filtering</li>
               <li>Limited favorites</li>
               <li>Safe video viewing</li>
@@ -462,12 +465,12 @@
             <h3>Premium</h3>
             <p class="plan-price">$9.99<span>/month</span></p>
             <ul class="plan-list">
-              <li>Unlimited Chatbot Query</li>
-              <li>Enhanced Recommendation Capabilities</li>
+              <li>Unlimited chatbot queries</li>
+              <li>Enhanced recommendation capabilities</li>
               <li>Multiple child accounts</li>
               <li>Personalised recommendations</li>
-              <li>Advanced Parental Controls</li>
-              <li>Screen Time Control</li>
+              <li>Advanced parental controls</li>
+              <li>Screen time control</li>
               <li>Safe video viewing</li>
               <li>Access to curated book library</li>
             </ul>
@@ -482,6 +485,10 @@
         <div class="section-heading">
           <span class="tag">Testimonials</span>
           <h2>What families may say about Little Dino</h2>
+          <p>
+            A moving testimonial section helps the website feel more alive and
+            more human.
+          </p>
         </div>
 
         <div class="testimonial-slider-wrapper">
@@ -495,7 +502,7 @@
                 </div>
               </div>
               <p>
-                “Little Dino has made it so much easier for me to let my child explore content safely. I love the parental controls and knowing everything is age-appropriate.”
+                “Little Dino has made it so much easier for me to let my child explore content safely.”
               </p>
             </div>
 
@@ -508,7 +515,7 @@
                 </div>
               </div>
               <p>
-                “Instead of scrolling endlessly, my child just asks the chatbot and gets perfect recommendations instantly. It’s a huge time saver!”
+                “My child just asks the chatbot and gets great recommendations instantly.”
               </p>
             </div>
 
@@ -521,20 +528,7 @@
                 </div>
               </div>
               <p>
-                “The screen time feature is a game changer. I can manage my child’s usage without constantly checking on them.”
-              </p>
-            </div>
-
-            <div class="testimonial-card moving-card glass-card">
-              <div class="testimonial-user">
-                <img src="https://i.pravatar.cc/100?img=20" alt="Parent profile" class="testimonial-avatar" />
-                <div>
-                  <h4>Hannah, Parent</h4>
-                  <span>★★★★★</span>
-                </div>
-              </div>
-              <p>
-                “I have two kids with different interests, and the app personalizes recommendations for each of them. It’s honestly amazing.”
+                “The screen time feature is a game changer for our family.”
               </p>
             </div>
 
@@ -547,7 +541,7 @@
                 </div>
               </div>
               <p>
-                “I love talking to the dino! It gives me cool books and videos about things I like.”
+                “I love talking to the dino! It gives me cool books and videos.”
               </p>
             </div>
 
@@ -560,11 +554,10 @@
                 </div>
               </div>
               <p>
-                “I just type what I want and it shows me fun stories. It’s like magic!”
+                “It’s like a fun story helper inside the app.”
               </p>
             </div>
 
-            <!-- duplicate set for seamless loop -->
             <div class="testimonial-card moving-card glass-card">
               <div class="testimonial-user">
                 <img src="https://i.pravatar.cc/100?img=32" alt="Parent profile" class="testimonial-avatar" />
@@ -574,7 +567,7 @@
                 </div>
               </div>
               <p>
-                “Little Dino has made it so much easier for me to let my child explore content safely. I love the parental controls and knowing everything is age-appropriate.”
+                “Little Dino has made it so much easier for me to let my child explore content safely.”
               </p>
             </div>
 
@@ -587,7 +580,7 @@
                 </div>
               </div>
               <p>
-                “Instead of scrolling endlessly, my child just asks the chatbot and gets perfect recommendations instantly. It’s a huge time saver!”
+                “My child just asks the chatbot and gets great recommendations instantly.”
               </p>
             </div>
 
@@ -600,20 +593,7 @@
                 </div>
               </div>
               <p>
-                “The screen time feature is a game changer. I can manage my child’s usage without constantly checking on them.”
-              </p>
-            </div>
-
-            <div class="testimonial-card moving-card glass-card">
-              <div class="testimonial-user">
-                <img src="https://i.pravatar.cc/100?img=20" alt="Parent profile" class="testimonial-avatar" />
-                <div>
-                  <h4>Hannah, Parent</h4>
-                  <span>★★★★★</span>
-                </div>
-              </div>
-              <p>
-                “I have two kids with different interests, and the app personalizes recommendations for each of them. It’s honestly amazing.”
+                “The screen time feature is a game changer for our family.”
               </p>
             </div>
 
@@ -626,7 +606,7 @@
                 </div>
               </div>
               <p>
-                “I love talking to the dino! It gives me cool books and videos about things I like.”
+                “I love talking to the dino! It gives me cool books and videos.”
               </p>
             </div>
 
@@ -639,7 +619,7 @@
                 </div>
               </div>
               <p>
-                “I just type what I want and it shows me fun stories. It’s like magic!”
+                “It’s like a fun story helper inside the app.”
               </p>
             </div>
           </div>
@@ -652,6 +632,10 @@
         <div class="section-heading">
           <span class="tag">Analytics</span>
           <h2>Track Little Dino growth at a glance</h2>
+          <p>
+            This section can be used to present platform progress clearly for users,
+            assessors, or future stakeholders.
+          </p>
         </div>
 
         <div class="analytics-grid">
