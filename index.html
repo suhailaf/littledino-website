@@ -28,6 +28,17 @@
   <div class="bg-grid"></div>
   <div class="sparkles" id="sparkles"></div>
 
+  <div class="floating-background" id="floatingBackground">
+    <span class="floating-shape shape-book">📚</span>
+    <span class="floating-shape shape-star">⭐</span>
+    <span class="floating-shape shape-heart">💜</span>
+    <span class="floating-shape shape-video">🎥</span>
+    <span class="floating-shape shape-dino">🦕</span>
+    <span class="floating-shape shape-spark">✨</span>
+    <span class="floating-shape shape-moon">🌙</span>
+    <span class="floating-shape shape-rainbow">🌈</span>
+  </div>
+
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="brand">
@@ -91,11 +102,11 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-image-card glass-card floating-card">
+          <div class="hero-image-card glass-card floating-card dino-logo-wrap">
             <img
               src="little_dino_icon_512.png"
               alt="Little Dino mascot"
-              class="hero-mascot"
+              class="hero-mascot moving-dino-logo"
             />
           </div>
 
@@ -556,6 +567,85 @@
                 “I just type what I want and it shows me fun stories. It’s like magic!”
               </p>
             </div>
+
+            <!-- duplicate set for seamless loop -->
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=32" alt="Parent profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Amira, Parent</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “Little Dino has made it so much easier for me to let my child explore content safely. I love the parental controls and knowing everything is age-appropriate.”
+              </p>
+            </div>
+
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=12" alt="Parent profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Daniel, Parent</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “Instead of scrolling endlessly, my child just asks the chatbot and gets perfect recommendations instantly. It’s a huge time saver!”
+              </p>
+            </div>
+
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=47" alt="Parent profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Sophia, Parent</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “The screen time feature is a game changer. I can manage my child’s usage without constantly checking on them.”
+              </p>
+            </div>
+
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=20" alt="Parent profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Hannah, Parent</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “I have two kids with different interests, and the app personalizes recommendations for each of them. It’s honestly amazing.”
+              </p>
+            </div>
+
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/400?img=37" alt="Child profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Maxine, Child</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “I love talking to the dino! It gives me cool books and videos about things I like.”
+              </p>
+            </div>
+
+            <div class="testimonial-card moving-card glass-card">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/400?img=4" alt="Child profile" class="testimonial-avatar" />
+                <div>
+                  <h4>Daniel, Child</h4>
+                  <span>★★★★★</span>
+                </div>
+              </div>
+              <p>
+                “I just type what I want and it shows me fun stories. It’s like magic!”
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -598,11 +688,10 @@
       <div class="container about-grid">
         <div>
           <span class="tag">About</span>
-          <h2>About the project</h2>
+          <h2>About the Little Dino project</h2>
           <p class="section-copy">
-            Little Dino is a student project that explores how a chatbot-based
-            mobile application can help children discover books and educational
-            videos more naturally than traditional browsing alone.
+            Little Dino is a chatbot-based platform designed to help children
+            discover books and educational videos in a safer and more guided way.
           </p>
           <p class="section-copy">
             This website acts as a stronger marketing prototype and can later
