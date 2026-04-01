@@ -168,12 +168,12 @@ const demoScenarios = {
       "Sharks are amazing! They are such interesting animals.",
       "I found a fun animal book and a matching ocean learning video for you."
     ],
-    bookTitle: "The Jungle Book",
-    bookDesc: "A classic animal adventure children enjoy reading.",
+    bookTitle: "Shark Adventure",
+    bookDesc: "A fun children’s book about sharks and ocean life.",
     videoTitle: "Ocean Animals",
     videoDesc: "A fun kids video about sea creatures and ocean life.",
-    bookImage: "book.jpg",
-    videoImage: "vid.png"
+    bookImage: "sharks-book.jpg",
+    videoImage: "sharks-video.jpg"
   },
   space: {
     user: "space",
@@ -185,8 +185,8 @@ const demoScenarios = {
     bookDesc: "A fun journey through stars, planets, and space discovery.",
     videoTitle: "Planets for Kids",
     videoDesc: "A simple educational video introducing the solar system.",
-    bookImage: "book.jpg",
-    videoImage: "vid.png"
+    bookImage: "space-book.jpg",
+    videoImage: "space-video.jpg"
   },
   dinosaurs: {
     user: "dinosaurs",
@@ -198,8 +198,8 @@ const demoScenarios = {
     bookDesc: "A fun children’s story about dinosaur adventures.",
     videoTitle: "Dinosaur Facts",
     videoDesc: "A playful educational video about different dinosaurs.",
-    bookImage: "book.jpg",
-    videoImage: "vid.png"
+    bookImage: "dino-book.jpg",
+    videoImage: "dino-video.jpg"
   },
   bedtime: {
     user: "bedtime story",
@@ -211,8 +211,8 @@ const demoScenarios = {
     bookDesc: "A soft bedtime story perfect for winding down.",
     videoTitle: "Sleepy Night Tales",
     videoDesc: "A relaxing bedtime video for young children.",
-    bookImage: "book.jpg",
-    videoImage: "vid.png"
+    bookImage: "bedtime-book.jpg",
+    videoImage: "bedtime-video.jpg"
   }
 };
 
