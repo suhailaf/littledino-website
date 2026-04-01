@@ -192,8 +192,8 @@
           <span class="tag">Inside the App</span>
           <h2>A closer look at the Little Dino experience</h2>
           <p>
-            A playful chatbot interface helps children discover a recommended
-            book and a matching video in a guided, child-friendly way.
+            Try the interactive chatbot demo below. Click a topic and watch Little Dino
+            reply with child-friendly recommendations.
           </p>
         </div>
 
@@ -204,23 +204,30 @@
                 <img src="little_dino_icon_512.png" alt="Little Dino app icon" class="app-avatar" />
                 <div>
                   <h3>Little Dino</h3>
-                  <p>Your virtual story-time buddy</p>
+                  <p id="demoStatusText">Online • Ready to help</p>
                 </div>
               </div>
               <div class="app-status-dot"></div>
             </div>
 
             <div class="app-chat-area">
+              <div class="demo-quick-prompts">
+                <button class="demo-chip" data-demo="sharks">🦈 sharks</button>
+                <button class="demo-chip" data-demo="space">🚀 space</button>
+                <button class="demo-chip" data-demo="dinosaurs">🦕 dinosaurs</button>
+                <button class="demo-chip" data-demo="bedtime">🌙 bedtime</button>
+              </div>
+
               <div class="demo-chat-window" id="demoChatWindow">
-                <div class="app-message app-message-bot demo-welcome">
+                <div class="app-message app-message-bot demo-new">
                   Hi! I’m Little Dino 🦕
                   <br />
-                  Ask me about animals, space, bedtime stories, or fun learning videos!
+                  Tap a topic above and I’ll show you how I recommend books and videos.
                 </div>
               </div>
 
               <div class="demo-recommendation-row" id="demoRecommendationRow">
-                <div class="recommendation-card book-card demo-card" id="demoBookCard">
+                <div class="recommendation-card book-card demo-card">
                   <div class="recommendation-badge">BOOK</div>
                   <img
                     src="book.jpg"
@@ -235,7 +242,7 @@
                   </div>
                 </div>
 
-                <div class="recommendation-card video-card demo-card" id="demoVideoCard">
+                <div class="recommendation-card video-card demo-card">
                   <div class="recommendation-badge video-badge">VIDEO</div>
                   <img
                     src="vid.png"
@@ -267,34 +274,34 @@
 
           <div class="app-side-info">
             <div class="about-panel glass-card">
-              <h3>Chat-led discovery</h3>
+              <h3>Interactive demo</h3>
               <p>
-                Kids can type simple interests and instantly receive friendly,
-                age-aware recommendations.
+                Visitors can click different interests and instantly see how the
+                chatbot responds inside the app.
               </p>
             </div>
 
             <div class="about-panel glass-card">
               <h3>Book and video pairing</h3>
               <p>
-                The app can suggest a book and a matching educational video together
-                in one guided experience.
+                Each topic updates both a book recommendation and a matching video
+                suggestion to reflect your app concept.
               </p>
             </div>
 
             <div class="about-panel glass-card">
-              <h3>Child-friendly design</h3>
+              <h3>Feels like a real chat</h3>
               <p>
-                Clear cards, simple buttons, and easy navigation help children
-                use the app comfortably.
+                Typing indicators, animated bubbles, and changing input text make
+                the demo feel closer to a real mobile chatbot.
               </p>
             </div>
 
             <div class="about-panel glass-card">
-              <h3>Safer exploration</h3>
+              <h3>FYP-friendly showcase</h3>
               <p>
-                Recommendations are designed to feel more structured and more
-                guided than open searching.
+                This is great for demos because your assessor can interact with the
+                website and immediately understand the idea.
               </p>
             </div>
           </div>
@@ -501,9 +508,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “Little Dino has made it so much easier for me to let my child explore content safely.”
-              </p>
+              <p>“Little Dino has made it much easier for my child to explore content safely.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -514,9 +519,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “My child just asks the chatbot and gets great recommendations instantly.”
-              </p>
+              <p>“My child just asks the chatbot and gets great recommendations instantly.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -527,9 +530,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “The screen time feature is a game changer for our family.”
-              </p>
+              <p>“The screen time feature is a game changer for our family.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -540,9 +541,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “I love talking to the dino! It gives me cool books and videos.”
-              </p>
+              <p>“I love talking to the dino! It gives me cool books and videos.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -553,9 +552,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “It’s like a fun story helper inside the app.”
-              </p>
+              <p>“It feels like a fun story helper inside the app.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -566,9 +563,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “Little Dino has made it so much easier for me to let my child explore content safely.”
-              </p>
+              <p>“Little Dino has made it much easier for my child to explore content safely.”</p>
             </div>
 
             <div class="testimonial-card moving-card glass-card">
@@ -579,48 +574,7 @@
                   <span>★★★★★</span>
                 </div>
               </div>
-              <p>
-                “My child just asks the chatbot and gets great recommendations instantly.”
-              </p>
-            </div>
-
-            <div class="testimonial-card moving-card glass-card">
-              <div class="testimonial-user">
-                <img src="https://i.pravatar.cc/100?img=47" alt="Parent profile" class="testimonial-avatar" />
-                <div>
-                  <h4>Sophia, Parent</h4>
-                  <span>★★★★★</span>
-                </div>
-              </div>
-              <p>
-                “The screen time feature is a game changer for our family.”
-              </p>
-            </div>
-
-            <div class="testimonial-card moving-card glass-card">
-              <div class="testimonial-user">
-                <img src="https://i.pravatar.cc/400?img=37" alt="Child profile" class="testimonial-avatar" />
-                <div>
-                  <h4>Maxine, Child</h4>
-                  <span>★★★★★</span>
-                </div>
-              </div>
-              <p>
-                “I love talking to the dino! It gives me cool books and videos.”
-              </p>
-            </div>
-
-            <div class="testimonial-card moving-card glass-card">
-              <div class="testimonial-user">
-                <img src="https://i.pravatar.cc/400?img=4" alt="Child profile" class="testimonial-avatar" />
-                <div>
-                  <h4>Daniel, Child</h4>
-                  <span>★★★★★</span>
-                </div>
-              </div>
-              <p>
-                “It’s like a fun story helper inside the app.”
-              </p>
+              <p>“My child just asks the chatbot and gets great recommendations instantly.”</p>
             </div>
           </div>
         </div>
