@@ -1,6 +1,3 @@
-// =============================
-// MOBILE NAVIGATION
-// =============================
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
@@ -25,9 +22,6 @@ if (menuToggle && navLinks) {
   });
 }
 
-// =============================
-// SMOOTH SCROLL
-// =============================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     const targetId = this.getAttribute("href");
@@ -45,9 +39,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// =============================
-// ANALYTICS COUNTER
-// =============================
 const counters = document.querySelectorAll(".count-up");
 
 const animateCounter = (counter) => {
@@ -89,9 +80,6 @@ if ("IntersectionObserver" in window) {
   counters.forEach((counter) => animateCounter(counter));
 }
 
-// =============================
-// BUTTON CLICK FEEDBACK
-// =============================
 document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("click", () => {
     button.style.transform = "scale(0.97)";
@@ -101,9 +89,6 @@ document.querySelectorAll(".btn").forEach((button) => {
   });
 });
 
-// =============================
-// SPARKLE BACKGROUND
-// =============================
 const sparklesContainer = document.getElementById("sparkles");
 
 if (sparklesContainer) {
@@ -130,9 +115,6 @@ if (sparklesContainer) {
   }
 }
 
-// =============================
-// REVEAL ON SCROLL
-// =============================
 const revealItems = document.querySelectorAll(
   ".feature-card, .step-card, .about-panel, .safety-main-card, .safety-side-card, .plan-card, .testimonial-card, .analytics-card, .contact-card, .app-phone"
 );
