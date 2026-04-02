@@ -147,7 +147,7 @@ if (floatingBackground && window.innerWidth > 768) {
   });
 }
 
-/* Interactive demo */
+/* Interactive chatbot demo */
 
 const demoChatWindow = document.getElementById("demoChatWindow");
 const demoRecommendationRow = document.getElementById("demoRecommendationRow");
@@ -219,16 +219,7 @@ const demoScenarios = {
   }
 };
 
-let selectedScenarioKey = null;
-let currentStep = 0;
-/*
-0 = nothing started
-1 = input typed, waiting to send user message
-2 = user message shown, waiting to show typing
-3 = first bot message shown, waiting for second bot message
-4 = second bot message shown, waiting to show cards
-5 = completed
-*/
+let demoBusy = false;
 
 function demoWait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -255,20 +246,12 @@ function createDemoMessage(text, className) {
 function createDemoTypingIndicator() {
   const typing = document.createElement("div");
   typing.className = "app-message demo-typing demo-new";
-  typing.id = "demoTypingIndicator";
   typing.innerHTML = "<span></span><span></span><span></span>";
   return typing;
 }
 
-function removeTypingIndicator() {
-  const typing = document.getElementById("demoTypingIndicator");
-  if (typing) typing.remove();
-}
-
 function resetDemoChat() {
   if (!demoChatWindow) return;
-
-  removeTypingIndicator();
 
   demoChatWindow.innerHTML = `
     <div class="app-message app-message-bot demo-new">
@@ -282,7 +265,6 @@ function resetDemoChat() {
   demoInputText.textContent = "Ask Little Dino for a story...";
   demoStatusText.textContent = "Online • Ready to help";
   demoStatusText.className = "demo-status-ready";
-  currentStep = 0;
 }
 
 async function typeIntoDemoInput(text) {
@@ -293,20 +275,24 @@ async function typeIntoDemoInput(text) {
     await demoWait(60);
   }
 
-  await demoWait(120);
+  await demoWait(140);
   demoInputText.textContent = text;
 }
 
-async function showTyping() {
+async function showBotTypingThenMessage(text) {
   demoStatusText.textContent = "Little Dino is typing...";
   demoStatusText.className = "demo-status-thinking";
-  removeTypingIndicator();
-  demoChatWindow.appendChild(createDemoTypingIndicator());
-  scrollDemoToBottom();
-  await demoWait(850);
-}
 
-function showBotReady() {
+  const typing = createDemoTypingIndicator();
+  demoChatWindow.appendChild(typing);
+  scrollDemoToBottom();
+
+  await demoWait(900);
+
+  typing.remove();
+  demoChatWindow.appendChild(createDemoMessage(text, "app-message-bot"));
+  scrollDemoToBottom();
+
   demoStatusText.textContent = "Online • Ready to help";
   demoStatusText.className = "demo-status-ready";
 }
@@ -316,92 +302,56 @@ function updateDemoCards(scenario) {
   demoBookDesc.textContent = scenario.bookDesc;
   demoVideoTitle.textContent = scenario.videoTitle;
   demoVideoDesc.textContent = scenario.videoDesc;
+
   demoBookImage.src = scenario.bookImage;
   demoVideoImage.src = scenario.videoImage;
-
-  demoBookImage.onerror = () => {
-    demoBookImage.src = scenario.bookImage;
-  };
-
-  demoVideoImage.onerror = () => {
-    demoVideoImage.src = scenario.videoImage;
-  };
 
   demoRecommendationRow.classList.add("active");
 }
 
-async function startScenario(key) {
-  selectedScenarioKey = key;
+async function runInteractiveDemo(key) {
+  if (demoBusy || !demoScenarios[key]) return;
+  demoBusy = true;
+
+  const scenario = demoScenarios[key];
   setActiveChip(key);
   resetDemoChat();
 
-  const scenario = demoScenarios[key];
-  demoHelperText.textContent = "Press the arrow to send the user message.";
+  if (demoHelperText) {
+    demoHelperText.textContent = "Little Dino is preparing your recommendations...";
+  }
+
+  await demoWait(250);
   await typeIntoDemoInput(scenario.user);
-  currentStep = 1;
-}
+  await demoWait(200);
 
-async function goNextDemoStep() {
-  if (!selectedScenarioKey) {
-    demoHelperText.textContent = "Choose a topic above first.";
-    return;
+  demoSendBtn.style.transform = "scale(0.9)";
+  setTimeout(() => {
+    demoSendBtn.style.transform = "";
+  }, 180);
+
+  demoChatWindow.appendChild(createDemoMessage(scenario.user, "app-message-user"));
+  scrollDemoToBottom();
+
+  await demoWait(450);
+
+  for (const msg of scenario.botMessages) {
+    await showBotTypingThenMessage(msg);
+    await demoWait(300);
   }
 
-  const scenario = demoScenarios[selectedScenarioKey];
+  updateDemoCards(scenario);
+  scrollDemoToBottom();
 
-  if (currentStep === 1) {
-    demoSendBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-      demoSendBtn.style.transform = "";
-    }, 180);
-
-    demoChatWindow.appendChild(createDemoMessage(scenario.user, "app-message-user"));
-    scrollDemoToBottom();
-    demoHelperText.textContent = "Press the arrow again to show Little Dino typing.";
-    currentStep = 2;
-    return;
+  if (demoHelperText) {
+    demoHelperText.textContent = "Choose another topic above to try a different demo.";
   }
 
-  if (currentStep === 2) {
-    await showTyping();
-    removeTypingIndicator();
-    demoChatWindow.appendChild(createDemoMessage(scenario.botMessages[0], "app-message-bot"));
-    scrollDemoToBottom();
-    showBotReady();
-    demoHelperText.textContent = "Press the arrow again for the next reply.";
-    currentStep = 3;
-    return;
-  }
-
-  if (currentStep === 3) {
-    await showTyping();
-    removeTypingIndicator();
-    demoChatWindow.appendChild(createDemoMessage(scenario.botMessages[1], "app-message-bot"));
-    scrollDemoToBottom();
-    showBotReady();
-    demoHelperText.textContent = "Press the arrow again to reveal the book and video.";
-    currentStep = 4;
-    return;
-  }
-
-  if (currentStep === 4) {
-    updateDemoCards(scenario);
-    demoHelperText.textContent = "Demo complete. Choose another topic to try again.";
-    currentStep = 5;
-    return;
-  }
-
-  if (currentStep === 5) {
-    demoHelperText.textContent = "Choose another topic above to start a new demo.";
-  }
+  demoBusy = false;
 }
 
 demoChips.forEach((chip) => {
   chip.addEventListener("click", () => {
-    startScenario(chip.dataset.demo);
+    runInteractiveDemo(chip.dataset.demo);
   });
-});
-
-demoSendBtn.addEventListener("click", () => {
-  goNextDemoStep();
 });
