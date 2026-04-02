@@ -219,6 +219,7 @@ const demoScenarios = {
   }
 };
 
+let selectedScenarioKey = null;
 let demoBusy = false;
 
 function demoWait(ms) {
@@ -275,7 +276,7 @@ async function typeIntoDemoInput(text) {
     await demoWait(60);
   }
 
-  await demoWait(140);
+  await demoWait(120);
   demoInputText.textContent = text;
 }
 
@@ -309,21 +310,30 @@ function updateDemoCards(scenario) {
   demoRecommendationRow.classList.add("active");
 }
 
-async function runInteractiveDemo(key) {
+async function selectScenario(key) {
   if (demoBusy || !demoScenarios[key]) return;
-  demoBusy = true;
 
-  const scenario = demoScenarios[key];
+  selectedScenarioKey = key;
   setActiveChip(key);
   resetDemoChat();
 
   if (demoHelperText) {
-    demoHelperText.textContent = "Little Dino is preparing your recommendations...";
+    demoHelperText.textContent = "Press the arrow once to send your message.";
   }
 
-  await demoWait(250);
-  await typeIntoDemoInput(scenario.user);
-  await demoWait(200);
+  await typeIntoDemoInput(demoScenarios[key].user);
+}
+
+async function sendSelectedScenario() {
+  if (demoBusy || !selectedScenarioKey) {
+    if (!selectedScenarioKey && demoHelperText) {
+      demoHelperText.textContent = "Choose a topic above first.";
+    }
+    return;
+  }
+
+  demoBusy = true;
+  const scenario = demoScenarios[selectedScenarioKey];
 
   demoSendBtn.style.transform = "scale(0.9)";
   setTimeout(() => {
@@ -332,6 +342,10 @@ async function runInteractiveDemo(key) {
 
   demoChatWindow.appendChild(createDemoMessage(scenario.user, "app-message-user"));
   scrollDemoToBottom();
+
+  if (demoHelperText) {
+    demoHelperText.textContent = "Little Dino is replying automatically...";
+  }
 
   await demoWait(450);
 
@@ -352,6 +366,10 @@ async function runInteractiveDemo(key) {
 
 demoChips.forEach((chip) => {
   chip.addEventListener("click", () => {
-    runInteractiveDemo(chip.dataset.demo);
+    selectScenario(chip.dataset.demo);
   });
+});
+
+demoSendBtn.addEventListener("click", () => {
+  sendSelectedScenario();
 });
