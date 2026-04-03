@@ -4,11 +4,18 @@ const navLinks = document.getElementById("navLinks");
 if (menuToggle && navLinks) {
   menuToggle.addEventListener("click", () => {
     navLinks.classList.toggle("show");
+    menuToggle.classList.toggle("active");
+    menuToggle.setAttribute(
+      "aria-expanded",
+      navLinks.classList.contains("show") ? "true" : "false"
+    );
   });
 
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("show");
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
 
@@ -18,6 +25,8 @@ if (menuToggle && navLinks) {
 
     if (!clickedInsideMenu && !clickedToggle) {
       navLinks.classList.remove("show");
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
     }
   });
 }
@@ -116,7 +125,7 @@ if (sparklesContainer) {
 }
 
 const revealItems = document.querySelectorAll(
-  ".feature-card, .step-card, .about-panel, .safety-main-card, .safety-side-card, .plan-card, .testimonial-card, .analytics-card, .contact-card, .app-phone"
+  ".feature-card, .step-card, .about-panel, .safety-main-card, .safety-side-card, .plan-card, .testimonial-card, .analytics-card, .contact-card, .app-phone, .privacy-card"
 );
 
 if ("IntersectionObserver" in window) {
@@ -364,12 +373,16 @@ async function sendSelectedScenario() {
   demoBusy = false;
 }
 
-demoChips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    selectScenario(chip.dataset.demo);
+if (demoChips.length) {
+  demoChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      selectScenario(chip.dataset.demo);
+    });
   });
-});
+}
 
-demoSendBtn.addEventListener("click", () => {
-  sendSelectedScenario();
-});
+if (demoSendBtn) {
+  demoSendBtn.addEventListener("click", () => {
+    sendSelectedScenario();
+  });
+}
