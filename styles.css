@@ -282,14 +282,43 @@ main,
 
 .menu-toggle {
   display: none;
-  border: 0;
-  background: #f4ebff;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  font-size: 1.2rem;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(164, 111, 255, 0.24));
+  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.18);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
-  color: var(--text);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.menu-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(139, 92, 246, 0.24);
+}
+
+.menu-bar {
+  width: 22px;
+  height: 2.5px;
+  border-radius: 999px;
+  background: #4a2fd0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.active .menu-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active .menu-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .menu-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .hero {
@@ -319,7 +348,8 @@ main,
 .section-heading h2,
 .safety-main-top h3,
 .about-grid h2,
-.cta-box h2 {
+.cta-box h2,
+.privacy-card h3 {
   font-family: "Baloo 2", sans-serif;
   line-height: 1.05;
   margin: 1rem 0 0.85rem;
@@ -333,7 +363,9 @@ main,
 .hero-description,
 .section-heading p,
 .section-copy,
-.cta-box p {
+.cta-box p,
+.privacy-card p,
+.privacy-card li {
   color: var(--muted);
   line-height: 1.85;
   font-size: 1.05rem;
@@ -495,7 +527,8 @@ main,
 .analytics-card,
 .app-phone,
 .safety-main-card,
-.safety-side-card {
+.safety-side-card,
+.privacy-card {
   border: 1px solid rgba(139, 92, 246, 0.08);
   box-shadow: var(--shadow);
 }
@@ -506,7 +539,8 @@ main,
 .contact-card,
 .plan-card,
 .testimonial-card,
-.analytics-card {
+.analytics-card,
+.privacy-card {
   border-radius: var(--radius-xl);
   padding: 1.7rem;
 }
@@ -589,7 +623,8 @@ main,
   align-items: center;
 }
 
-.about-panel ul {
+.about-panel ul,
+.privacy-card ul {
   margin: 1rem 0 0;
   padding-left: 1.1rem;
   line-height: 1.9;
@@ -1120,6 +1155,24 @@ main,
   background: linear-gradient(135deg, rgba(244, 234, 255, 0.76), rgba(255, 244, 218, 0.78));
 }
 
+.privacy-hero {
+  padding-top: 5rem;
+}
+
+.privacy-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.privacy-card h3 {
+  font-size: 1.5rem;
+  margin-top: 1.8rem;
+}
+
+.privacy-actions {
+  margin-top: 2rem;
+}
+
 .site-footer {
   padding: 2rem 0;
   background: rgba(255, 255, 255, 0.55);
@@ -1152,6 +1205,17 @@ main,
 
 .footer-brand strong { display: block; color: var(--text); }
 .footer-brand p { margin: 0.15rem 0 0; }
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links a {
+  font-weight: 700;
+  color: var(--primary-dark);
+}
 
 .reveal {
   opacity: 0;
@@ -1198,20 +1262,22 @@ main,
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 12px);
     right: 1rem;
     display: none;
     flex-direction: column;
     align-items: flex-start;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    min-width: 220px;
+    gap: 0.9rem;
+    background: rgba(255, 255, 255, 0.97);
+    padding: 1.1rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(64, 46, 120, 0.16);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    min-width: 240px;
   }
 
   .nav-links.show { display: flex; }
-  .menu-toggle { display: inline-grid; place-items: center; }
+  .menu-toggle { display: inline-flex; }
   .hero h1 { max-width: 100%; }
 
   .moving-card {
