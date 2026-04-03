@@ -11,7 +11,6 @@
   />
 
   <link rel="icon" type="image/png" href="little_dino_icon_512.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -49,7 +48,11 @@
         </div>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
 
       <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
@@ -61,6 +64,7 @@
         <a href="#testimonials">Testimonials</a>
         <a href="#analytics">Analytics</a>
         <a href="#about">About</a>
+        <a href="privacy.html">Privacy Policy</a>
         <a href="#register" class="nav-cta">Register Now</a>
       </nav>
     </div>
@@ -273,8 +277,8 @@
             </div>
 
             <div class="about-panel glass-card">
-              <h3>FYP-friendly showcase</h3>
-              <p>Your assessor can interact with the website and immediately understand the app concept.</p>
+              <h3>Privacy & trust</h3>
+              <p>Families can also review your privacy policy page directly from the menu and footer for added trust.</p>
             </div>
           </div>
         </div>
@@ -623,7 +627,10 @@
           <p>Chatbot App for Book and Video Recommendations for Kids</p>
         </div>
       </div>
-      <p>© 2026 Little Dino. Marketing website prototype.</p>
+
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
     </div>
   </footer>
 
